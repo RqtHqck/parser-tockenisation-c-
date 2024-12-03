@@ -8,31 +8,28 @@ class Program
 {
     static void Main()
     {
-        // Построение пути с использованием Path.Combine
-        string baseDirectory = "/home/rqthqck/Coding/C#/lab3/solution";
-        string relativePath = "input/input.txt";
-        string filePath = Path.Combine(baseDirectory, relativePath);
-        // Регулярное выражение для разделения на слова и знаки пунктуации
-        string pattern = @"\w+|[^\w\s]+";
+        // Путь к файлу
+        string inputFilePath = Path.Combine(
+            Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
+            "input",
+            "input.txt"
+        );
+        
+        // Чтение содержимого файла
+        string inputText = File.ReadAllText(inputFilePath);
+        
+        // Распарсить текст
+        Text parsedText = Text.Parse(inputText);
 
-        try
+        Console.WriteLine("Исходный текст:");
+        Console.WriteLine(parsedText);
+
+        Console.WriteLine("\nВсе предложения:");
+        foreach (var sentence in parsedText.Sentences)
         {
-            string fileContent = File.ReadAllText(filePath);
-            Console.WriteLine("Содержимое файла:");
-            Console.WriteLine(fileContent);
-
-            // Разделение текста на слова и знаки пунктуации
-            var matches = Regex.Matches(fileContent, pattern);
-
-            Console.WriteLine("Разбито на слова и знаки пунктуации:");
-            foreach (var match in matches)
-            {
-                Console.WriteLine(match);
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Ошибка: {ex.Message}");
+            Console.WriteLine(sentence);
         }
     }
 }
+
+

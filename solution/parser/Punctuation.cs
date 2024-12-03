@@ -2,9 +2,11 @@ namespace solution;
 
 public class Punctuation
 {
-    public string Symbol { get; set; }
-    public Punctuation(string symbol)
+    public char Content { get; }
+    public Punctuation(char content)
     {
-        Symbol = symbol;
+        Content = content;
     }
+    
+    public override string ToString() => Content.ToString();
 }   
