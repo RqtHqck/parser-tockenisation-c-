@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Text.RegularExpressions;
 
 namespace solution;
 
@@ -8,28 +7,24 @@ class Program
 {
     static void Main()
     {
-        // Путь к файлу
-        string inputFilePath = Path.Combine(
-            Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
-            "input",
-            "input.txt"
-        );
-        
-        // Чтение содержимого файла
-        string inputText = File.ReadAllText(inputFilePath);
-        
-        // Распарсить текст
-        Text parsedText = Text.Parse(inputText);
+        // Путь к файлам
+        string baseDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+        string inputFilePath = Path.Combine(baseDirectory, "input", "input.txt");
+        string stopWordsFilePath = Path.Combine(baseDirectory, "input", "stopWords.txt");
+        string xmlFilePath = Path.Combine(baseDirectory, "output", "xmlFile.xml");
 
-        Console.WriteLine("Исходный текст:");
-        Console.WriteLine(parsedText);
+        // Инициализация ParserService
+        ParserService parserService = new ParserService(inputFilePath, stopWordsFilePath, xmlFilePath);
 
-        Console.WriteLine("\nВсе предложения:");
-        foreach (var sentence in parsedText.Sentences)
-        {
-            Console.WriteLine(sentence);
-        }
+        // Выполнение задач
+        parserService.DisplayOriginalText();
+        parserService.DisplaySentences();
+        parserService.DisplaySortedSentencesByWordCount();
+        parserService.DisplaySortedSentencesByLength();
+        parserService.FindWordsInQuestionsByLength();
+        parserService.RemoveWordsByConsonantLength();
+        parserService.ReplaceWordsByLengthInSentence();
+        parserService.RemoveStopWords();
+        parserService.ExportToXml();
     }
 }
-
-

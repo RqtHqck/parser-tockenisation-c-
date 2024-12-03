@@ -1,21 +1,23 @@
 using System.Text.RegularExpressions;
+using System.Xml.Serialization;
 
 namespace solution;
-
+[XmlInclude(typeof(Word))]
+[XmlInclude(typeof(Punctuation))]
 public class Sentence
 {
-    private List<object> _elements;
-    // objects - любой тип объектов
-    
-    public List<object> Elements // Свойство для доступа к элементам
+    [XmlElement("Word", typeof(Word))]
+    [XmlElement("Punctuation", typeof(Punctuation))]
+    public List<object> Elements { get; set; }
+
+    public Sentence()
     {
-        get => _elements;
-        set => _elements = value; // Теперь можно изменять элементы списка
+        Elements = new List<object>(); // Инициализируем пустой список
     }
     
     public Sentence(IEnumerable<object> elements)
     {
-        _elements = new List<object>(elements);
+        Elements = new List<object>(elements);
     }
 
     public static Sentence Parse(string sentence)
@@ -38,5 +40,33 @@ public class Sentence
         return new Sentence(elements);
     }
     
-    public override string ToString() => string.Join(" ", _elements.Select(e => e.ToString()));
+    public IEnumerable<Word> Words => Elements.OfType<Word>();
+    
+    public int WordCount => Elements.Count(e => e is Word);
+    
+    public int GetLength() => Elements.Sum(e => e.ToString().Length);
+
+    public Sentence replaceWordsByLength(int length, Sentence sentence, string userString)
+    {
+        var updatedElements = new List<object>();
+
+        foreach (var element in sentence.Elements)
+        {
+            if (element is Word word && word.Content.Length == length)
+            {
+                // Заменяем слово на подстроку
+                updatedElements.Add(new Word(userString));
+            }
+            else
+            {
+                // Сохраняем остальные элементы без изменений
+                updatedElements.Add(element);
+            }
+        }
+
+        return new Sentence(updatedElements);
+    }
+
+
+    public override string ToString() => string.Join(" ", Elements.Select(e => e.ToString()));
 }

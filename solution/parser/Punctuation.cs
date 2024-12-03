@@ -1,8 +1,16 @@
-namespace solution;
+using System.Xml.Serialization;
 
+namespace solution;
 public class Punctuation
 {
-    public char Content { get; }
+    public char Content { get; set; }
+    
+    public Punctuation()
+    {
+        Content = '\0'; 
+    }
+
+    
     public Punctuation(char content)
     {
         Content = content;
