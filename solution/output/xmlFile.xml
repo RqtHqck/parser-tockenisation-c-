@@ -3,15 +3,6 @@
   <Sentences>
     <Sentence>
       <Word>
-        <Content>На</Content>
-      </Word>
-      <Word>
-        <Content>входе</Content>
-      </Word>
-      <Word>
-        <Content>вашей</Content>
-      </Word>
-      <Word>
         <Content>программы</Content>
       </Word>
       <Punctuation>
@@ -20,21 +11,15 @@
       <Word>
         <Content>произвольный</Content>
       </Word>
-      <Word>
-        <Content>текст</Content>
-      </Word>
       <Punctuation>
         <Content>40</Content>
       </Punctuation>
       <Word>
-        <Content>наример</Content>
+        <Content>напр'имер</Content>
       </Word>
       <Punctuation>
         <Content>44</Content>
       </Punctuation>
-      <Word>
-        <Content>текст</Content>
-      </Word>
       <Word>
         <Content>учебника</Content>
       </Word>
@@ -49,9 +34,6 @@
       </Punctuation>
     </Sentence>
     <Sentence>
-      <Word>
-        <Content>Текст</Content>
-      </Word>
       <Word>
         <Content>необходимо</Content>
       </Word>
@@ -69,12 +51,6 @@
       </Punctuation>
     </Sentence>
     <Sentence>
-      <Word>
-        <Content>Каждый</Content>
-      </Word>
-      <Word>
-        <Content>токен</Content>
-      </Word>
       <Punctuation>
         <Content>45</Content>
       </Punctuation>

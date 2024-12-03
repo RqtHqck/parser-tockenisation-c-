@@ -26,5 +26,6 @@ class Program
         parserService.ReplaceWordsByLengthInSentence();
         parserService.RemoveStopWords();
         parserService.ExportToXml();
+        parserService.Concordance();
     }
 }

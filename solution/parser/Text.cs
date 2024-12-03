@@ -7,6 +7,7 @@ namespace solution;
 public class Text
 {
     public List<Sentence> Sentences { get; set; } = new List<Sentence>();
+    
 
     
     public Text()
@@ -133,6 +134,33 @@ public class Text
         return File.ReadAllLines(filePath).Select(line => line.Trim()).Where(line => !string.IsNullOrEmpty(line));
     }
 
+    public void Concordance()
+    {
+        Dictionary<string, List<int>> wordOccurrences = new Dictionary<string, List<int>>();
+
+        for (int i = 0; i < Sentences.Count; i++)
+        {
+            var sentence = Sentences[i];
+            foreach (var element in sentence.Elements)
+            {
+                if (element is Word word)
+                {
+                    string currWord = word.Content.ToLower();
+                    
+                    if (!wordOccurrences.ContainsKey(currWord))
+                    {
+                        wordOccurrences[currWord] = new List<int> { 0 };
+                    }
+                    wordOccurrences[currWord][0] += 1;
+                    wordOccurrences[currWord].Add(i + 1);
+                }
+            }
+        }
+        foreach (var entry in wordOccurrences)
+        {
+            Console.WriteLine($"{entry.Key}: Повторений = {entry.Value[0]}, Номера предложений = {string.Join(", ", entry.Value.Skip(1))}");
+        }
+    }
 
     public override string ToString() => string.Join(" ", Sentences.Select(s => s.ToString())); 
 }

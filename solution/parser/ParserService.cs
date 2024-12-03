@@ -10,6 +10,12 @@ public class ParserService
     private readonly string _xmlFilePath;
     private Text _parsedText;
 
+    public Text ParsedText
+    {
+        get => _parsedText; 
+        set => _parsedText = value; 
+    }
+
     public ParserService(string inputFilePath, string stopWordsFilePath, string xmlFilePath)
     {
         _inputFilePath = inputFilePath;
@@ -22,14 +28,14 @@ public class ParserService
 
     public void DisplayOriginalText()
     {
-        Console.WriteLine("Исходный текст:");
-        Console.WriteLine(_parsedText);
+        Console.WriteLine("Исходный токенизированный текст:");
+        Console.WriteLine(ParsedText);
     }
 
     public void DisplaySentences()
     {
         Console.WriteLine("\nВсе предложения:");
-        foreach (var sentence in _parsedText.Sentences)
+        foreach (var sentence in ParsedText.Sentences)
         {
             Console.WriteLine(sentence);
         }
@@ -38,7 +44,7 @@ public class ParserService
     public void DisplaySortedSentencesByWordCount()
     {
         Console.WriteLine("\nВ порядке возрастания по количеству слов в предложении:");
-        foreach (var sentence in _parsedText.GetSentencesByWordCount())
+        foreach (var sentence in ParsedText.GetSentencesByWordCount())
         {
             Console.WriteLine(sentence);
         }
@@ -47,7 +53,7 @@ public class ParserService
     public void DisplaySortedSentencesByLength()
     {
         Console.WriteLine("\nВ порядке возрастания по длине предложения:");
-        foreach (var sentence in _parsedText.GetSentencesByLength())
+        foreach (var sentence in ParsedText.GetSentencesByLength())
         {
             Console.WriteLine(sentence);
         }
@@ -55,10 +61,11 @@ public class ParserService
 
     public void FindWordsInQuestionsByLength()
     {
+        Console.WriteLine("\nНахождение слов по длине в вопросительном предложении:");
         Console.WriteLine("Введите длину искомого слова:");
         if (int.TryParse(Console.ReadLine(), out int length))
         {
-            var words = _parsedText.GetWordsOfLengthInQuestions(length);
+            var words = ParsedText.GetWordsOfLengthInQuestions(length);
             Console.WriteLine($"\nСлова с указанной длиной в вопросительных предложениях:");
             foreach (var word in words)
             {
@@ -73,12 +80,13 @@ public class ParserService
 
     public void RemoveWordsByConsonantLength()
     {
+        Console.WriteLine("Удалить слово по длине:");
         Console.WriteLine("Введите длину искомого слова:");
         if (int.TryParse(Console.ReadLine(), out int length))
         {
-            _parsedText = _parsedText.RemoveWordsByConsonant(length);
+            ParsedText = ParsedText.RemoveWordsByConsonant(length);
             Console.WriteLine("\nТекст после удаления слов:");
-            Console.WriteLine(_parsedText);
+            Console.WriteLine(ParsedText);
         }
         else
         {
@@ -88,16 +96,17 @@ public class ParserService
 
     public void ReplaceWordsByLengthInSentence()
     {
+        Console.WriteLine("\nЗаменить слово на пользовательскую подстроку:");
         Console.WriteLine("\nВсе предложения:");
-        for (int i = 0; i < _parsedText.Sentences.Count; i++)
+        for (int i = 0; i < ParsedText.Sentences.Count; i++)
         {
-            Console.WriteLine($"{i + 1}: {_parsedText.Sentences[i]}");
+            Console.WriteLine($"{i + 1}: {ParsedText.Sentences[i]}");
         }
 
         Console.WriteLine("\nВыберите номер предложения из данных:");
-        if (int.TryParse(Console.ReadLine(), out int sentenceIndex) && sentenceIndex > 0 && sentenceIndex <= _parsedText.Sentences.Count)
+        if (int.TryParse(Console.ReadLine(), out int sentenceIndex) && sentenceIndex > 0 && sentenceIndex <= ParsedText.Sentences.Count)
         {
-            Sentence sentence = _parsedText.Sentences[sentenceIndex - 1];
+            Sentence sentence = ParsedText.Sentences[sentenceIndex - 1];
 
             Console.WriteLine("Введите длину искомого слова:");
             if (int.TryParse(Console.ReadLine(), out int length))
@@ -129,14 +138,19 @@ public class ParserService
     public void RemoveStopWords()
     {
         Console.WriteLine("Удаление стоп-слов:");
-        _parsedText = _parsedText.RemoveStopWords(_stopWordsFilePath);
+        ParsedText = ParsedText.RemoveStopWords(_stopWordsFilePath);
         Console.WriteLine("\nТекст после удаления стоп-слов:");
-        Console.WriteLine(_parsedText);
+        Console.WriteLine(ParsedText);
     }
 
     public void ExportToXml()
     {
-        XmlWorker.SerializeToXml(_parsedText, _xmlFilePath);
+        XmlWorker.SerializeToXml(ParsedText, _xmlFilePath);
         Console.WriteLine($"\nТекст экспортирован в XML файл: {_xmlFilePath}");
+    }
+
+    public void Concordance()
+    {
+        ParsedText.Concordance();
     }
 }

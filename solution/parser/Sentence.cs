@@ -23,7 +23,7 @@ public class Sentence
     public static Sentence Parse(string sentence)
     {
         var elements = new List<object>();
-        var matches = Regex.Matches(sentence, @"\w+|[^\w\s]"); 
+        var matches = Regex.Matches(sentence, @"[\w'�]+|[^\w\s]"); 
         // Регулярное выражение @"\w+|[^\w\s]" находит последовательности букв, цифр и подчеркиваний (слова),
         // а также символы, которые не являются буквами, цифрами или пробелами (например, знаки препинания).
 
