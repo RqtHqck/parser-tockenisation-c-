@@ -3,6 +3,15 @@
   <Sentences>
     <Sentence>
       <Word>
+        <Content>На</Content>
+      </Word>
+      <Word>
+        <Content>входе</Content>
+      </Word>
+      <Word>
+        <Content>вашей</Content>
+      </Word>
+      <Word>
         <Content>программы</Content>
       </Word>
       <Punctuation>
@@ -11,17 +20,32 @@
       <Word>
         <Content>произвольный</Content>
       </Word>
+      <Word>
+        <Content>Текст</Content>
+      </Word>
+      <Word>
+        <Content>текст</Content>
+      </Word>
       <Punctuation>
         <Content>40</Content>
       </Punctuation>
       <Word>
-        <Content>напр'имер</Content>
+        <Content>например</Content>
       </Word>
       <Punctuation>
         <Content>44</Content>
       </Punctuation>
       <Word>
-        <Content>учебника</Content>
+        <Content>текст</Content>
+      </Word>
+      <Word>
+        <Content>у</Content>
+      </Word>
+      <Word>
+        <Content>чебника</Content>
+      </Word>
+      <Word>
+        <Content>по</Content>
       </Word>
       <Word>
         <Content>программированию</Content>
@@ -30,10 +54,13 @@
         <Content>41</Content>
       </Punctuation>
       <Punctuation>
-        <Content>46</Content>
+        <Content>63</Content>
       </Punctuation>
     </Sentence>
     <Sentence>
+      <Word>
+        <Content>Текст</Content>
+      </Word>
       <Word>
         <Content>необходимо</Content>
       </Word>
@@ -51,9 +78,18 @@
       </Punctuation>
     </Sentence>
     <Sentence>
+      <Word>
+        <Content>Каждый</Content>
+      </Word>
+      <Word>
+        <Content>токен</Content>
+      </Word>
       <Punctuation>
         <Content>45</Content>
       </Punctuation>
+      <Word>
+        <Content>это</Content>
+      </Word>
       <Word>
         <Content>объект</Content>
       </Word>
@@ -64,7 +100,13 @@
         <Content>Word</Content>
       </Word>
       <Word>
+        <Content>или</Content>
+      </Word>
+      <Word>
         <Content>Sentence</Content>
+      </Word>
+      <Word>
+        <Content>или</Content>
       </Word>
       <Word>
         <Content>Punctuation</Content>
@@ -84,7 +126,13 @@
         <Content>определить</Content>
       </Word>
       <Word>
+        <Content>как</Content>
+      </Word>
+      <Word>
         <Content>минимум</Content>
+      </Word>
+      <Word>
+        <Content>такие</Content>
       </Word>
       <Word>
         <Content>классы</Content>
@@ -92,6 +140,9 @@
       <Punctuation>
         <Content>44</Content>
       </Punctuation>
+      <Word>
+        <Content>как</Content>
+      </Word>
       <Word>
         <Content>Text</Content>
       </Word>
@@ -125,6 +176,9 @@
         <Content>45</Content>
       </Punctuation>
       <Word>
+        <Content>это</Content>
+      </Word>
+      <Word>
         <Content>коллекция</Content>
       </Word>
       <Word>
@@ -142,10 +196,16 @@
         <Content>45</Content>
       </Punctuation>
       <Word>
+        <Content>это</Content>
+      </Word>
+      <Word>
         <Content>коллекция</Content>
       </Word>
       <Word>
         <Content>слов</Content>
+      </Word>
+      <Word>
+        <Content>и</Content>
       </Word>
       <Word>
         <Content>знаков</Content>
@@ -165,6 +225,9 @@
         <Content>45</Content>
       </Punctuation>
       <Word>
+        <Content>это</Content>
+      </Word>
+      <Word>
         <Content>неразрывная</Content>
       </Word>
       <Word>
@@ -176,6 +239,15 @@
       <Punctuation>
         <Content>44</Content>
       </Punctuation>
+      <Word>
+        <Content>за</Content>
+      </Word>
+      <Word>
+        <Content>которой</Content>
+      </Word>
+      <Word>
+        <Content>может</Content>
+      </Word>
       <Word>
         <Content>следовать</Content>
       </Word>
@@ -199,6 +271,15 @@
       <Punctuation>
         <Content>45</Content>
       </Punctuation>
+      <Word>
+        <Content>это</Content>
+      </Word>
+      <Word>
+        <Content>один</Content>
+      </Word>
+      <Word>
+        <Content>из</Content>
+      </Word>
       <Word>
         <Content>возможных</Content>
       </Word>

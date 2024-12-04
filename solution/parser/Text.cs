@@ -44,7 +44,7 @@ public class Text
     
     public IEnumerable<string> GetWordsOfLengthInQuestions(int length)
     {
-        var result = new List<string>();
+        var result = new HashSet<string>();
 
         foreach (var sentence in Sentences)
         {
@@ -54,9 +54,9 @@ public class Text
                 foreach (var word in sentence.Words)
                 {
                     // Добавляем слово в результат, если его длина равна length и оно еще не было добавлено
-                    if (word.Content.Length == length && !result.Contains(word.Content))
+                    if (word.Content.ToLower().Length == length)
                     {
-                        result.Add(word.Content);
+                        result.Add(word.Content.ToLower());
                     }
                 }
             }
@@ -134,7 +134,7 @@ public class Text
         return File.ReadAllLines(filePath).Select(line => line.Trim()).Where(line => !string.IsNullOrEmpty(line));
     }
 
-    public void Concordance()
+    public Dictionary<string, List<int>> Concordance()
     {
         Dictionary<string, List<int>> wordOccurrences = new Dictionary<string, List<int>>();
 
@@ -156,10 +156,8 @@ public class Text
                 }
             }
         }
-        foreach (var entry in wordOccurrences)
-        {
-            Console.WriteLine($"{entry.Key}: Повторений = {entry.Value[0]}, Номера предложений = {string.Join(", ", entry.Value.Skip(1))}");
-        }
+
+        return wordOccurrences;
     }
 
     public override string ToString() => string.Join(" ", Sentences.Select(s => s.ToString())); 

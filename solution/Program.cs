@@ -17,15 +17,14 @@ class Program
         ParserService parserService = new ParserService(inputFilePath, stopWordsFilePath, xmlFilePath);
 
         // Выполнение задач
-        parserService.DisplayOriginalText();
-        parserService.DisplaySentences();
-        parserService.DisplaySortedSentencesByWordCount();
-        parserService.DisplaySortedSentencesByLength();
-        parserService.FindWordsInQuestionsByLength();
-        parserService.RemoveWordsByConsonantLength();
-        parserService.ReplaceWordsByLengthInSentence();
-        parserService.RemoveStopWords();
-        parserService.ExportToXml();
+        // parserService.DisplayOriginalText();
+        // parserService.DisplaySortedSentencesByWordCount();
+        // parserService.DisplaySortedSentencesByLength();
+        // parserService.FindWordsInQuestionsByLength();
+        // parserService.RemoveWordsByConsonantLength();
+        // parserService.ReplaceWordsByLengthInSentence();
+        // parserService.RemoveStopWords();
+        // parserService.ExportToXml();
         parserService.Concordance();
     }
 }
